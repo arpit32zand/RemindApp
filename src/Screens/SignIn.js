@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
+import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
@@ -12,8 +13,10 @@ export default function SignIn() {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
 
+    const Navigate = useNavigate();
+
     const handleSubmit = () => {
-        console.log("working")
+        Navigate('/home')
     }
 
     const styles={

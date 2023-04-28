@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -28,165 +29,204 @@ export default function SetReminder (){
 
     const styles={
         root: {
-            // height: "100vh",
-            // backgroundImage: `url(${homeBackground})`,
+            height: "100vh",
+            backgroundImage: `url(${homeBackground})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             backgroundPosition: "center",
-            // color: 'white'
         },
         backStyle:{
             backgroundColor: 'rgba(0, 0, 0, 0.7)',
-            height:"100vh",
-            alignItems:'center'
-        },
-        headContainer:{
-            // // width: "100%",
-            // // height: '80vh',
-            // display: "flex",
-            // flexDirection: "column",
-            justifyContent: 'space-between',
-            // alignItems:"center",
-            padding: '5% 10% 0',
-        },
-        dateCont:{
-            display:'flex',
-            flexDirection:"row",
-            // alignItems:"center",
-            // // paddingBottom:"1%",
-            paddingTop:"1%",
-            paddingLeft:"1%",
-            justifyContent:"space-around",
+            height: "100vh",
         },
         headings:{
             display: 'flex',
             flexDirection: 'column',
             justityContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
+            paddingTop: '2%'
+        },
+        container:{
+            width: "40%",
+            margin: "2% auto 0",
+            display: 'flex',
+            flexDirection: 'column',
+            borderRadius: '20px',
+            padding: '1%'
+        },
+        key:{
+            fontSize: '1.3rem',
+            fontFamily: "Roboto,Helvetica, Arial",
+            float: 'left'
+        },
+        fieldContainer:{
+            display:'flex',
+            flexDirection:"row",
+            margin: '1% 0',
+            justifyContent:"space-between",
+        },
+        valueContain:{
+            // width:'70%'
+        },
+        buttonContainer: {
+            marginTop: '2%',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
         }
     }
     return(
         <Grid style={styles.root}>
             <div style={styles.backStyle} >
                 <Grid style={styles.headings} >
-                <Typography component="h1" variant="h4" style={styles.welcomeHead}>
-                    Set New Reminder
-                </Typography>
+                    <Typography component="h1" variant="h4" style={{color: 'white'}}>
+                        Set New Reminder
+                    </Typography>
                 </Grid>
-                <div style={styles.headContainer}>
-                    <div style={styles.dateCont}>
-                        <Typography component="h1" variant="h5" style={{paddingRight:'2%'}}>
-                            Select a date:-
-                        </Typography>
-                        <TextField
-                            style={{
-                                right:'25%'
-                                // color: 'white'
-                            }}
-                            id="date"
-                            label="Select a date"
-                            type="date"
-                            defaultValue="2017-05-24"
-                            InputLabelProps={{
-                                shrink: true
-                            }}
-                        />
+                <Paper elevation={6} style={styles.container}>
+                    <div style={styles.fieldContainer}>
+                        <div style={styles.keyContain}>
+                            <Typography style={styles.key}>
+                                Select a date
+                            </Typography>
+                        </div>
+                        <div style={styles.valueContain}>
+                            <TextField
+                                style={{width: '15rem'}}
+                                id="date"
+                                size="small"
+                                label="Select a date"
+                                type="date"
+                                defaultValue="2017-05-24"
+                                InputLabelProps={{
+                                    shrink: true
+                                }}
+                            />
+                        </div>
                     </div>
-                    <div style={styles.dateCont}>
-                        <Typography component="h1" variant="h5" style={{paddingRight:'8%'}}>
-                            Subject:-
-                        </Typography>
-                        <FormControl sx={{ m: 1, minWidth: 150 }} size="medium" style={{right:"25.5%"}}>
-                            <InputLabel id="demo-simple-select-label" style={{paddingLeft:"12%"}}>Subject</InputLabel>
-                            <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={age}
-                            label="Subject"
-                            onChange={handleChange}
-                            >
-                            <MenuItem value={10}>Meeting</MenuItem>
-                            <MenuItem value={20}>Deadline</MenuItem>
-                            <MenuItem value={30}>Task</MenuItem>
-                            <MenuItem value={30}>Appointment</MenuItem>
-                            </Select>
-                        </FormControl>
+                    <div style={styles.fieldContainer}>
+                        <div style={styles.keyContain}>
+                            <Typography style={styles.key}>
+                                Subject
+                            </Typography>
+                        </div>
+                        <div style={styles.valueContain}>
+                            <FormControl size="small" style={{margin:0}}>
+                                <InputLabel id="demo-simple-select-label" >Subject</InputLabel>
+                                <Select
+                                    style={{width: '15rem'}}
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={age}
+                                    label="Subject"
+                                    onChange={handleChange}
+                                >
+                                    <MenuItem value={"Meeting"}>Meeting</MenuItem>
+                                    <MenuItem value={"Deadline"}>Deadline</MenuItem>
+                                    <MenuItem value={"Task"}>Task</MenuItem>
+                                    <MenuItem value={"Appointment"}>Appointment</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </div>
                     </div>
-                    <div style={styles.dateCont}>
-                        <Typography component="h1" variant="h5" style={{paddingLeft:'1.5%'}}>
-                            Add Description:-
-                        </Typography>
-                        <TextareaAutosize
-                            // aria-label="minimum height"
-                            minRows={3}
-                            placeholder="Enter Description"
-                            style={{right:"30%"}}
-                        />
+                    <div style={styles.fieldContainer}>
+                        <div style={styles.keyContain}>
+                            <Typography style={styles.key}>
+                                Add Description
+                            </Typography>
+                        </div>
+                        <div style={styles.valueContain}>
+                            <TextareaAutosize
+                                style={{width: '14.7rem'}}
+                                minRows={3}
+                                placeholder="Enter Description"
+                            />
+                        </div>
                     </div>
-                    <div style={styles.dateCont}>
-                        <Typography component="h1" variant="h5" style={{paddingLeft:'1.5%'}}>
-                            Email Address:-
-                        </Typography>
-                        <TextField
-                            variant="outlined"
-                            required
-                            style={{right:"21%"}}
-                            label="Email Address"
-                            autoComplete="email"
-                            autoFocus
-                            type="text"
-                            placeholder="E-mail"
-                            name="email"
-                            onChange={(text) => setEmail(text)}
-                        />
+                    <div style={styles.fieldContainer}>
+                        <div style={styles.keyContain}>
+                            <Typography style={styles.key}>
+                                Email Address
+                            </Typography>
+                        </div>
+                        <div style={styles.valueContain}>
+                            <TextField
+                                variant="outlined"
+                                required
+                                style={{width: '15rem'}}
+                                size="small"
+                                label="Email Address"
+                                autoComplete="email"
+                                autoFocus
+                                type="text"
+                                placeholder="E-mail"
+                                name="email"
+                                onChange={(text) => setEmail(text)}
+                            />
+                        </div>
                     </div>
-                    <div style={styles.dateCont}>
-                        <Typography component="h1" variant="h5" style={{paddingLeft:'0.5%'}}>
-                            Contact No :-
-                        </Typography>
-                        <TextField
-                            variant="outlined"
-                            required
-                            style={{right:"20%"}}
-                            label="Contact Number"
-                            autoComplete="phone number"
-                            autoFocus
-                            type="text"
-                            placeholder="Enter your Contact no"
-                            name="email"
-                            onChange={(text) => setContactNo(text)}
-                        />
+                    <div style={styles.fieldContainer}>
+                        <div style={styles.keyContain}>
+                            <Typography style={styles.key}>
+                                Contact No
+                            </Typography>
+                        </div>
+                        <div style={styles.valueContain}>
+                            <TextField
+                                variant="outlined"
+                                style={{width: '15rem'}}
+                                required
+                                size="small"
+                                label="Contact Number"
+                                autoComplete="phone number"
+                                autoFocus
+                                type="text"
+                                placeholder="Enter your Contact no"
+                                name="email"
+                                onChange={(text) => setContactNo(text)}
+                            />
+                        </div>
                     </div>
-                    <div style={styles.dateCont}>
-                        <Typography component="h1" variant="h5" style={{paddingLeft:'1.5%'}}>
-                            SMS Number :-
-                        </Typography>
-                        <TextField
-                            variant="outlined"
-                            required
-                            style={{right:"21%"}}
-                            label="Email Address"
-                            autoComplete="phone number"
-                            autoFocus
-                            type="text"
-                            placeholder="Enter your Contact no"
-                            name="email"
-                            onChange={(text) => setSMSNo(text)}
-                        />
+                    <div style={styles.fieldContainer}>
+                        <div style={styles.keyContain}>
+                            <Typography style={styles.key}>
+                                SMS Number
+                            </Typography>
+                        </div>
+                        <div style={styles.valueContain}>
+                            <TextField
+                                variant="outlined"
+                                required
+                                style={{width: '15rem'}}
+                                size="small"
+                                label="Email Address"
+                                autoComplete="phone number"
+                                autoFocus
+                                type="text"
+                                placeholder="Enter your Contact no"
+                                name="email"
+                                onChange={(text) => setSMSNo(text)}
+                            />
+                        </div>
                     </div>
-                    <div style={styles.dateCont}>
-                        <Typography component="h1" variant="h5" style={styles.welcomeHead}>
-                        Recur for next:-
-                        </Typography>
-                        <FormGroup style={{display:'flex',flexDirection:'row',paddingRight:"20%",}}>
-                            <FormControlLabel control={<Checkbox/>} label="7 Days" />
-                            <FormControlLabel control={<Checkbox />} label="5 Days" />
-                            <FormControlLabel control={<Checkbox />} label="3 Days" />
-                            <FormControlLabel control={<Checkbox />} label="2 Days" />
-                        </FormGroup>
+                    <div style={styles.fieldContainer}>
+                        <div style={styles.keyContain}>
+                            <Typography style={styles.key}>
+                                Recur for next
+                            </Typography>
+                        </div>
+                        <div style={styles.valueContain}>
+                            <FormGroup style={{display:'flex',flexDirection:'row'}}>
+                                <FormControlLabel control={<Checkbox size="small" />} label="7 Days" />
+                                <FormControlLabel control={<Checkbox size="small" />} label="5 Days" />
+                                <FormControlLabel control={<Checkbox size="small" />} label="3 Days" />
+                                <FormControlLabel control={<Checkbox size="small" />} label="2 Days" />
+                            </FormGroup>
+                        </div>
                     </div>
-                </div>
-                <div style={styles.dateCont} >
+                </Paper>
+                <div style={styles.buttonContainer} >
                     <Button 
                         variant="contained"
                     >
@@ -198,11 +238,11 @@ export default function SetReminder (){
                         Confirm
                     </Button>
                 </div>
-                <div>
-                <Link href="#" underline="always">
-                    {"LogOut"}
-                </Link>
-                </div>
+                {/* <div>
+                    <Link href="#" underline="always">
+                        {"LogOut"}
+                    </Link>
+                </div> */}
             </div>
         </Grid>
     )
