@@ -3,7 +3,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-// import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import homeBackground from "../Assets/background.jpg";
 
 const name="Shubhangi Srivastava"
@@ -12,6 +12,8 @@ const currentDate= new Date(current).toLocaleDateString();
 const date=`${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
 export default function HomePage(){
+
+    const Navigate = useNavigate();
  
     const styles={
         root: {
@@ -65,6 +67,7 @@ export default function HomePage(){
                     <Button 
                         style={styles.button} 
                         variant="contained"
+                        onClick={()=> Navigate('/set-reminder')}
                     >
                         Set Reminder
                     </Button>
