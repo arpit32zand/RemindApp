@@ -8,7 +8,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-// import TextareaAutosize from '@mui/base/TextareaAutosize';
+import TextareaAutosize from '@mui/base/TextareaAutosize';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -19,23 +19,26 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
-// import { Navigate } from "react-router-dom";
 
-export default function SetReminder (){
+export default function EnableReminder (){
 
     const Navigate = useNavigate();
 
-    const [age, setAge] = useState('');
+    const [subject, setSubject] = useState('');
     const [email,setEmail] = useState('');
     const [contactNo,setContactNo] = useState('');
     const [smsNo,setSMSNo] = useState('');
+    const [Rsubject, setRSubject] = useState('');
     const [open, setOpen] = useState(false);
 
     const handleChange = (event) => {
-      setAge(event.target.value);
+      setSubject(event.target.value);
     };
+    const handleRChange = (event) => {
+        setRSubject(event.target.value);
+      };
 
-    const handleClickOpen = () => {
+      const handleClickOpen = () => {
         setOpen(true);
       };
     
@@ -45,7 +48,7 @@ export default function SetReminder (){
 
     const styles={
         root: {
-            height: "100vh",
+            height: "110vh",
             backgroundImage: `url(${homeBackground})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
@@ -53,7 +56,7 @@ export default function SetReminder (){
         },
         backStyle:{
             backgroundColor: 'rgba(0, 0, 0, 0.7)',
-            height: "100vh",
+            height: "110vh",
         },
         headings:{
             display: 'flex',
@@ -97,7 +100,7 @@ export default function SetReminder (){
             <div style={styles.backStyle} >
                 <Grid style={styles.headings} >
                     <Typography component="h1" variant="h4" style={{color: 'white'}}>
-                        Set New Reminder
+                        Enable Reminder
                     </Typography>
                 </Grid>
                 <Paper elevation={6} style={styles.container}>
@@ -134,7 +137,7 @@ export default function SetReminder (){
                                     style={{width: '15rem'}}
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
-                                    value={age}
+                                    value={subject}
                                     label="Subject"
                                     onChange={handleChange}
                                 >
@@ -149,17 +152,42 @@ export default function SetReminder (){
                     <div style={styles.fieldContainer}>
                         <div style={styles.keyContain}>
                             <Typography style={styles.key}>
-                                Add Description
+                                Reminder
                             </Typography>
                         </div>
                         <div style={styles.valueContain}>
-                            <TextField
-                                style={{width: '15rem'}}
-                                id="outlined-multiline-flexible"
-                                label="Multiline"
-                                multiline
-                                maxRows={4}
-                            />
+                            <FormControl size="small" style={{margin:0}}>
+                                <InputLabel id="demo-simple-select-label" >Subject</InputLabel>
+                                <Select
+                                    style={{width: '15rem'}}
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={Rsubject}
+                                    label="Subject"
+                                    onChange={handleRChange}
+                                >
+                                    <MenuItem value={"Meeting"}>Meeting</MenuItem>
+                                    <MenuItem value={"Deadline"}>Deadline</MenuItem>
+                                    <MenuItem value={"Task"}>Task</MenuItem>
+                                    <MenuItem value={"Appointment"}>Appointment</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </div>
+                    </div>
+                    <div style={styles.fieldContainer}>
+                        <div style={styles.keyContain}>
+                            <Typography style={styles.key}>
+                              Description
+                            </Typography>
+                        </div>
+                        <div style={styles.valueContain}>
+                        <TextField
+                            style={{width: '15rem'}}
+                            id="outlined-multiline-flexible"
+                            label="Multiline"
+                            multiline
+                            maxRows={4}
+                        />
                         </div>
                     </div>
                     <div style={styles.fieldContainer}>
@@ -256,30 +284,29 @@ export default function SetReminder (){
                     <Button 
                         variant="contained"
                         onClick={handleClickOpen}
-                    >
-                        Confirm
-                    </Button>
-                    <Dialog
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="alert-dialog-title"
-                        aria-describedby="alert-dialog-description"
-                    >
-                         <DialogContent>
-                            <DialogContentText id="alert-dialog-description">
-                                Reminder set Successfully
-                            </DialogContentText>
-                         </DialogContent>
-                         <DialogActions>
-                            <Button onClick={handleClose} autoFocus>
-                                ok
-                            </Button>
-                         </DialogActions>
-                    </Dialog>
-                    
+                        >
+                            Confirm
+                        </Button>
+                        <Dialog
+                            open={open}
+                            onClose={handleClose}
+                            aria-labelledby="alert-dialog-title"
+                            aria-describedby="alert-dialog-description"
+                        >
+                             <DialogContent>
+                                <DialogContentText id="alert-dialog-description">
+                                    Reminder Enabled Successfully
+                                </DialogContentText>
+                             </DialogContent>
+                             <DialogActions>
+                                <Button onClick={handleClose} autoFocus>
+                                    ok
+                                </Button>
+                             </DialogActions>
+                        </Dialog>
                 </div>
                 <div style={{marginLeft:"80%"}}>
-                    <Link
+                <Link
                      underline="always"
                      onClick={() => {
                         Navigate('/logout')
@@ -287,7 +314,6 @@ export default function SetReminder (){
                         {"LogOut"}
                     </Link>
                 </div>
-                
             </div>
         </Grid>
     )

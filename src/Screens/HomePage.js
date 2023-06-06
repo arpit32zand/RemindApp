@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { useNavigate } from "react-router-dom";
 import homeBackground from "../Assets/background.jpg";
+import Link from '@mui/material/Link';
 
 const name="Shubhangi Srivastava"
 const current=new Date()
@@ -49,6 +50,13 @@ export default function HomePage(){
             flexDirection: 'column',
             justityContent: 'center',
             alignItems: 'center'
+        },
+        buttonContainer: {
+            marginTop: '1%',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
         }
     }
     return(
@@ -74,33 +82,48 @@ export default function HomePage(){
                     <Button 
                         style={styles.button} 
                         variant="contained"
+                        onClick={()=> Navigate('/modify-reminder')}
                     >
                         Modify Reminder
                     </Button>
                     <Button 
                         style={styles.button} 
                         variant="contained"
+                        onClick={()=> Navigate('/disable-reminder')}
                     >
                         Disable Reminder
                     </Button>
                     <Button 
                         style={styles.button} 
                         variant="contained"
+                        onClick={()=> Navigate('/delete-reminder')}
                     >
                         Delete Reminder
                     </Button>
                     <Button 
                         style={styles.button} 
                         variant="contained"
+                        onClick={()=> Navigate('/enable-reminder')}
                     >
                         Enable Reminder
                     </Button>
                     <Button 
                         style={styles.button} 
                         variant="contained"
+                        onClick={()=> Navigate('/view-reminder')}
                     >
                         View Reminder
                     </Button>
+                </div>
+                <div style={styles.buttonContainer} >
+                    <Link 
+                    underline="always"
+                    onClick={() => {
+                        Navigate('/logout')
+                      }}
+                    >
+                        {"LogOut"}
+                    </Link>
                 </div>
             </div>
         </Grid>
